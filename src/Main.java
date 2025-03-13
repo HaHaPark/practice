@@ -1,24 +1,38 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int N = scanner.nextInt();
-        String[] strings = new String[N];
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int n = s.length();
+        StringBuilder sb = new StringBuilder(n);
+        int i = 0;
+        while (i < n) {
+            char c = s.charAt(i);
+            if (c == 'W') {
+                int j = i;
+                while (j < n && s.charAt(j) == 'W') {
+                    j++;
+                }
+                if (j < n && s.charAt(j) == 'A') {
+                    int countW = j - i;
+                    sb.append('A');
+                    for (int k = 0; k < countW; k++) {
+                        sb.append('C');
+                    }
+                    i = j + 1;
+                } else {
 
-        for (int i = 0; i < N; i++) {
-            strings[i] = scanner.next();
+                    while (i < j) {
+                        sb.append('W');
+                        i++;
+                    }
+                }
+            } else {
+                sb.append(c);
+                i++;
+            }
         }
-
-        Arrays.sort(strings, Comparator.comparingInt(String::length));
-
-        StringBuilder result = new StringBuilder();
-        for (String s : strings) {
-            result.append(s);
-        }
-
-        System.out.println(result.toString());
-
-        scanner.close();
+        System.out.println(sb.toString());
     }
 }
