@@ -1,38 +1,35 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        int n = s.length();
-        StringBuilder sb = new StringBuilder(n);
-        int i = 0;
-        while (i < n) {
-            char c = s.charAt(i);
-            if (c == 'W') {
-                int j = i;
-                while (j < n && s.charAt(j) == 'W') {
-                    j++;
-                }
-                if (j < n && s.charAt(j) == 'A') {
-                    int countW = j - i;
-                    sb.append('A');
-                    for (int k = 0; k < countW; k++) {
-                        sb.append('C');
-                    }
-                    i = j + 1;
-                } else {
+        int N = sc.nextInt();
 
-                    while (i < j) {
-                        sb.append('W');
-                        i++;
-                    }
-                }
-            } else {
-                sb.append(c);
-                i++;
-            }
+        Integer[] arr = new Integer[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = sc.nextInt();
         }
-        System.out.println(sb.toString());
+
+        int operations = 0;
+        while (true) {
+            int positiveCount = 0;
+            for (int num : arr) {
+                if (num > 0) {
+                    positiveCount++;
+                }
+            }
+
+            if (positiveCount <= 1) break;
+
+            Arrays.sort(arr, Collections.reverseOrder());
+
+            arr[0]--;
+            arr[1]--;
+            operations++;
+        }
+        System.out.println(operations);
+        sc.close();
     }
 }
