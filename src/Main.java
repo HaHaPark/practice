@@ -1,20 +1,17 @@
-import java.io.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine().trim());
-        String[] tokens = br.readLine().split(" ");
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
 
         long globalT = 1;
 
         for (int i = 0; i < N; i++) {
-            long H = Long.parseLong(tokens[i]);
+            long H = sc.nextLong();
 
             int m = (int)((globalT - 1) % 3);
             int[] pattern;
-
             int[] prefix = new int[4];
             if (m == 0) {
                 pattern = new int[]{1, 1, 3};
@@ -26,6 +23,7 @@ public class Main {
             prefix[1] = pattern[0];
             prefix[2] = pattern[0] + pattern[1];
             prefix[3] = 5;
+
             long bestA = Long.MAX_VALUE;
             for (int r = 1; r <= 3; r++) {
                 long q;
@@ -38,10 +36,10 @@ public class Main {
                 long candidateA = 3 * q + r;
                 bestA = Math.min(bestA, candidateA);
             }
-
             globalT += bestA;
         }
 
         System.out.println(globalT - 1);
+        sc.close();
     }
 }
