@@ -32,5 +32,7 @@ public class hee {
         }
         System.out.println(operations);
         sc.close();
+
+
     }
 }
