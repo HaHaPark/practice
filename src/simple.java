@@ -36,6 +36,8 @@ public class simple {
             }
         }
 
+
+
         System.out.println(removals);
     }
 }
