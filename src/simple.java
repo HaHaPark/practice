@@ -18,6 +18,8 @@ public class simple {
             int u = sc.nextInt();
             int v = sc.nextInt();
 
+
+
             if (u == v) {
                 removals++;
                 continue;
