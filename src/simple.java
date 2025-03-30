@@ -17,9 +17,7 @@ public class simple {
         for (int i = 0; i < M; i++) {
             int u = sc.nextInt();
             int v = sc.nextInt();
-
-
-
+            햐
             if (u == v) {
                 removals++;
                 continue;
